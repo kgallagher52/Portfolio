@@ -1,11 +1,9 @@
 import Layout from '../components/Layout';
 
-const Home = () => {
+export default () => {
 	return (
 		<Layout title="Home">
 			<p>Welcom to the home page.</p>
 		</Layout>
 	);
 };
-
-export default Home;

@@ -1,6 +1,6 @@
 import Layout from '../components/Layout';
 
-const HireMe = () => {
+export default () => {
 	return (
 		<Layout title="Hire Me">
 			<p>
@@ -9,5 +9,3 @@ const HireMe = () => {
 		</Layout>
 	);
 };
-
-export default HireMe;

@@ -1,5 +1,6 @@
 import Layout from '../components/Layout'
-const about = () => {
+
+export default () => {
 	return (
 		<Layout title="About Me">
 			<p>
@@ -12,5 +13,3 @@ const about = () => {
 		</Layout>
 	);
 };
-
-export default about;
