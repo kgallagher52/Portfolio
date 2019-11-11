@@ -1,8 +1,8 @@
 // _error.js let's us change what the default error page looks like
 import Layout from '../components/Layout';
 
-export default () => (
-  <Layout title="Error!!!">
-    <p>Couldn't get that page, sorry!</p>
-  </Layout>
-)
+export default ({ statusCode }) => (
+	<Layout title="Error!!!">
+		{statusCode ? `Could not load your user data: Status Code ${statusCode}` : `Couldn't get that page, sorry`}
+	</Layout>
+);

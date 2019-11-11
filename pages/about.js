@@ -1,8 +1,9 @@
 import Layout from '../components/Layout';
 import fetch from 'isomorphic-unfetch';
+import Error from './_error';
 
-const About = ({ user }) => {
-	return (
+const About = ({status, user}) => {
+	return !status ? (
 		<Layout title="About Me">
 			<p>{user.name}</p>
 			<p>Bio: {user.bio}</p>
@@ -22,12 +23,17 @@ const About = ({ user }) => {
 				`}
 			</style>
 		</Layout>
+	) : (
+		<Error statusCode={status}/>
 	);
 };
 
 About.getInitialProps = async () => {
 	const res = await fetch('https://api.github.com/users/kgallagher52');
+
+	const statusCode = res.status > 200 ? res.status : false; //Error handling that will redirect to the error page and show the status code
+
 	const data = await res.json();
-	return { user: data };
+	return { user: data, status:statusCode };
 };
 export default About;
