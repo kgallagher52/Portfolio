@@ -7,3 +7,4 @@ This is a Next.JS application of my portfolio and a learning application for oth
   2. https://github.com/kgallagher52/Portfolio
   3. Loading State npm i nprogress https://cdnjs.com/libraries/nprogress 
   4. Fonts: https://fonts.google.com/
+  5. GitHub API: https://api.github.com/users/$username
