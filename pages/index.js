@@ -1,9 +1,11 @@
-const Home = () => {
-  return (
-    <div>
-      This is the homepage
-    </div>
-  )
-}
+import Layout from '../components/Layout';
 
-export default Home
+const Home = () => {
+	return (
+		<Layout title="Home">
+			<p>Welcom to the home page.</p>
+		</Layout>
+	);
+};
+
+export default Home;
