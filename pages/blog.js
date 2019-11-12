@@ -5,9 +5,9 @@ import Link from 'next/link';
 import Post from './post';
 
 
-const PostLink = ({ title }) => (
+const PostLink = ({ title, slug }) => (
   <li>
-  <Link href={`/post?title=${title}`}>
+  <Link as={`blog/${slug}`} href={`/post?title=${title}`}>
     <a>{title}</a>
   </Link>
 </li>
@@ -18,11 +18,11 @@ const PostLink = ({ title }) => (
   return (
     <Layout title="My Blog">
       <ul>
-       <PostLink title="React"/>
-       <PostLink title="Next"/>
-       <PostLink title="HTML"/>
-       <PostLink title="CSS"/>
-       <PostLink title="Javascript"/>
+       <PostLink slug="react-post" title="React"/>
+       <PostLink slug="next-post" title="Next"/>
+       <PostLink slug="html-post" title="HTML"/>
+       <PostLink slug="css-post" title="CSS"/>
+       <PostLink slug="javascript-post" title="Javascript"/>
 
       </ul>
     </Layout>
