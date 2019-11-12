@@ -5,8 +5,8 @@ import NProgress from 'nprogress';
 
 // Start hook to know when the route change is beginning. 
 Router.onRouteChangeStart = url => {
-  console.log("Router hook started:",url);
-  NProgress.start();
+	console.log("Router hook started:", url);
+	NProgress.start();
 }
 
 Router.onRouteChangeComplete = () => NProgress.done();
@@ -30,7 +30,7 @@ export default ({ children, title }) => {
 				<Link href="/hireme">
 					<a>Hire Me</a>
 				</Link>
-        <Link href="/technologies">
+				<Link href="/technologies">
 					<a>Technologies</a>
 				</Link>
 			</header>
@@ -51,10 +51,10 @@ export default ({ children, title }) => {
 						justify-content: space-around;
 						padding: 1em;
 						font-size: 1.2rem;
-						background: indigo;
+						background: #0937a9;
 					}
 					header a {
-						color: darkgrey;
+						color: #fff;
 						text-decoration: none;
 					}
 					header a:hover {
