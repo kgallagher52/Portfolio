@@ -1,22 +1,22 @@
 //REMOVE
 
 import Layout from "../components/Layout";
-import { getTechById } from "../actions";
-import { Router } from 'next/router'
+import { getTechBySlug } from "../actions";
 import Link from "next/link";
 
 const Tech = ({ technology }) => {
   return (
+
     <Layout title={technology.title}>
       <img src={technology.image} href={technology.title} />
-        <a href={technology.resources.url}>{technology.resources.title}</a>
+      <a href={technology.resources.url}>{technology.resources.title}</a>
       <p>{technology.def}</p>
 
       <Link href="/technologies/" as="/technologies">
-        <a  id="backLink">Go Back</a>
+        <a id="backLink">Go Back</a>
       </Link>
       <style jsx>
-          {`
+        {`
           img {
             max-width:240px;
             max-height:135px;
@@ -48,8 +48,8 @@ const Tech = ({ technology }) => {
 };
 
 Tech.getInitialProps = async context => {
-  var id = context.asPath[context.asPath.length - 1];
-  var technology = await getTechById(id);
+  const { slug } = context.query;
+  var technology = await getTechBySlug(slug);
   return { technology };
 };
 

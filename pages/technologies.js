@@ -9,8 +9,8 @@ const Technologies = ({ data }) => {
     <Layout title="My Technologies">
       <div className="outer-container">
         {data.map(t => (
-          <div className="container" key={t.id}>
-            <Link as={`/tech${t.id}`} href={`/tech?id=${t.id}`}>
+          <div className="container" key={t.slug}>
+            <Link as={`/tech${t.slug}`} href={`/tech?slug=${t.slug}`}>
               <a>{t.title}</a>
             </Link>
           </div>
