@@ -6,7 +6,7 @@ import { getTechData } from "../actions";
 
 const Technologies = ({ data }) => {
   return (
-    <Layout title="My Technologies">
+    <Layout title="technologies">
       <div className="outer-container">
         {data.map(t => (
           <div className="container" key={t.slug}>

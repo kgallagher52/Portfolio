@@ -3,7 +3,8 @@ import Layout from '../components/Layout';
 export default () => {
 	return (
 		<Layout title="Home">
-			<p>Welcom to the home page.</p>
+			<h1>Keaton Gallagher</h1>
+			<p>Software Engineer</p>
 		</Layout>
 	);
 };
