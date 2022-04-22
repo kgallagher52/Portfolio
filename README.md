@@ -4,3 +4,4 @@ My own site built with Vite | React | Typescript
 
 # Resources
 1. Initial setup: https://www.pixelmatters.com/blog/how-to-set-up-a-front-end-project-with-vite-react-and-typescript
+2. Ladle Stories: https://www.ladle.dev/docs/setup/
