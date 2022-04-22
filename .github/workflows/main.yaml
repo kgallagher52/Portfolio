@@ -1,0 +1,25 @@
+name: Init Build
+
+on: push
+
+jobs:
+  build:
+    name: Build-App
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          path: src
+          fetch-depth: "0"
+      - name: Use Node.js 16x
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+          cache: 'npm'
+          cache-dependency-path: src/pnpm-lock.yaml
+      - name: Install modules
+        run: |
+          cd src
+          npm install -g pnpm
+          pnpm install
