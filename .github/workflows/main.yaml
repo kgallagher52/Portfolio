@@ -1,15 +1,32 @@
 name: Cypress Tests
 
-on: [push]
+on: push
 
 jobs:
-  cypress-run:
-    runs-on: ubuntu-latest
+  build:
+    name: Build/Verify
+    runs-on: [ self-hosted, keaton-portfolio]
     steps:
-      - name: Checkout
+      - name: Checkout Repo
         uses: actions/checkout@v2
-      - name: Cypress Run
-        uses: cypress-io/github-action@v2
-        with: 
-          build: pnpm run build
-          start: pnpm run dev
+        with:
+          path: src
+          fetch-depth: "0"
+      - name: Prep
+        uses: ./actions/prep/
+      - name: Configure CI Git User
+        run: |
+          cd src
+          git config --global user.name '@system-admin'
+          git config --global user.email 'system-admin@users.noreply.github.com'
+      - name: Use Node.js 16x
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+          cache: 'npm'
+          cache-dependency-path: src/pnpm-lock.yaml
+      - name: Install modules
+        run: |
+          cd src
+          npm install -g pnpm
+          pnpm install
