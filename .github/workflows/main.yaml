@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: Init Build
 
 on: push
 
@@ -12,13 +12,6 @@ jobs:
         with:
           path: src
           fetch-depth: "0"
-      - name: Prep
-        uses: ./actions/prep/
-      - name: Configure CI Git User
-        run: |
-          cd src
-          git config --global user.name '@system-admin'
-          git config --global user.email 'system-admin@users.noreply.github.com'
       - name: Use Node.js 16x
         uses: actions/setup-node@v2
         with:
