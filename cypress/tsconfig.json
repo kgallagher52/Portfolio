@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "types": [
+      "cypress"
+    ],
+    "allowJs": true,
+    "noEmit": true,
+    "target": "es2019",
+  },
+  "include": [
+    "**/*.*"
+  ]
+}

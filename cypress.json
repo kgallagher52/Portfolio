@@ -1,0 +1,12 @@
+{
+  "projectId": "i6g33q",
+  "numTestsKeptInMemory": 4,
+  "integrationFolder": "cypress/integration/tests",
+  "retries": {
+    "openMode": 0,
+    "runMode": 2
+  },
+  "viewportHeight": 1080,
+  "viewportWidth": 1920,
+  "testFiles": "**/*.spec.{js,ts,jsx,tsx}"
+}

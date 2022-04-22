@@ -1,0 +1,11 @@
+{
+  "numTestsKeptInMemory": 4,
+  "pluginsFile": "cypress/e2e/plugins/",
+  "supportFile": "cypress/e2e/support/",
+  "integrationFolder": "cypress/e2e/tests/",
+  "fixturesFolder": "cypress/e2e/fixtures/",
+  "retries": {
+    "openMode": 0,
+    "runMode": 2
+  }
+}
