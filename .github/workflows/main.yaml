@@ -4,8 +4,8 @@ on: push
 
 jobs:
   build:
-    name: Build/Verify
-    runs-on: [ self-hosted, keaton-portfolio]
+    name: Build-App
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
