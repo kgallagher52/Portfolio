@@ -16,8 +16,6 @@
     "cypress:open": "cypress open",
     "cypress:record": "npx cypress run --record --key 410a5095-95ca-42d5-a364-446be9313ea4",
     "cypress:run": "cypress run --key 410a5095-95ca-42d5-a364-446be9313ea4 video=false",
-    "cypress:run-e2e": "npx cypress run -C cypress-e2e.json",
-    "cypress:open-e2e": "npx cypress open -C cypress-e2e.json",
     "preview": "vite preview",
     "lint:scripts": "eslint --ext .ts,.tsx src",
     "lint:styles": "stylelint \"src/**/*.css\""

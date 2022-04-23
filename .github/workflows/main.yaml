@@ -5,7 +5,7 @@ on:
     branches: main
 jobs:
   cypress-tests:
-    name: Build App
+    name: Cypress Testing
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -13,22 +13,19 @@ jobs:
         with:
           path: src
           fetch-depth: "0"
-
       - name: Use Node.js 16x
         uses: actions/setup-node@v2
         with:
           node-version: "16"
           cache: 'npm'
           cache-dependency-path: src/pnpm-lock.yaml
-
       - name: Install modules
         run: |
           cd src
           npm install -g pnpm
           pnpm install
-
-      - name: Cypress Integration Tests
-        id: cypress-integration-tests
+      - name: Cypress Testing
+        id: cypress-testing
         uses: cypress-io/github-action@v2
         continue-on-error: true
         with:
@@ -37,34 +34,42 @@ jobs:
             wait-on: 'http://localhost:3000'
             wait-on-timeout: 300
             config-file: cypress.json
-      - name: Cypress Integration Tests Failed
-        if: steps.cypress-integration-tests.outcome == 'failure'
-        run: gh issue comment --body "Cypress integration tests failed run:https://storage.googleapis.com/cy-test-reporter.appspot.com/${{ github.repository }}/index.html" 
-      - name: Cypress Integration Tests Succeeded
-        if: steps.cypress-integration-tests.outcome == 'success'
-        run: gh issue comment --body "All Cypress integration tests are passing!!! :)" 
-      - name: Fail
-        if: steps.cypress-integration-tests.outcome == 'failure'
-        run: exit 1
 
-      - name: Cypress e2e Tests
-        id: cypress-e2e-tests
-        uses: cypress-io/github-action@v2
-        continue-on-error: true
+      - name: Cypress Tests Failed
+        if: steps.cypress-testing.outcome == 'failure'
+        run: gh issue comment --body "Cypress tests failed run:https://storage.googleapis.com/cy-test-reporter.appspot.com/${{ github.repository }}/index.html" 
+      - name: Cypress Tests Succeeded
+        if: steps.cypress-testing.outcome == 'success'
+        run: gh issue comment --body "All Cypress tests are passing!!! :)" 
+      - name: Fail
+        if: steps.cypress-testing.outcome == 'failure'
+        run: exit 1
+  run-unit-tests:
+    name: Unit Testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
         with:
-            install: false
-            start: pnpm run dev
-            wait-on: 'http://localhost:3000'
-            wait-on-timeout: 300
-            config-file: cypress-e2e.json
-      - name: Cypress e2e Tests Failed
-        if: steps.cypress-e2e-tests.outcome == 'failure'
-        run: gh issue comment --body "Cypress e2e tests failed run:https://storage.googleapis.com/cy-test-reporter.appspot.com/${{ github.repository }}/index.html" 
-      - name: Cypress e2e Tests Succeeded
-        if: steps.cypress-e2e-tests.outcome == 'success'
-        run: gh issue comment --body "All Cypress e2e tests are passing!!! :)" 
-      - name: Fail
-        if: steps.cypress-e2e-tests.outcome == 'failure'
-        run: exit 1
-    
+          fetch-depth: "0"
+      - name: Use Node.js 16x
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+          cache: 'npm'
+          cache-dependency-path: pnpm-lock.yaml
+      - name: Install modules & Running Unit Tests
+        id: unit-testing
+        run: |
+          npm install -g pnpm
+          pnpm install
+          pnpm run test
 
+      - name: Unit Tests Failed
+        if: steps.unit-testing.outcome == 'failure'
+        run: gh issue comment --body "Unit tests failed run:https://storage.googleapis.com/cy-test-reporter.appspot.com/${{ github.repository }}/index.html" 
+      - name: Unit Tests Succeeded
+        if: steps.unit-testing.outcome == 'success'
+        run: gh issue comment --body "All Unit tests are passing!!! :)" 
+      - name: Fail
+        if: steps.unit-testing.outcome == 'failure'
+        run: exit 1
