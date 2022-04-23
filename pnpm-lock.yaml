@@ -19,6 +19,7 @@ specifiers:
   identity-obj-proxy: 3.0.0
   jest: 27.5.1
   postcss: 8.4.12
+  postcss-import: 14.1.0
   prettier: 2.6.2
   react: ^18.0.0
   react-dom: ^18.0.0
@@ -56,6 +57,7 @@ devDependencies:
   identity-obj-proxy: 3.0.0
   jest: 27.5.1
   postcss: 8.4.12
+  postcss-import: 14.1.0_postcss@8.4.12
   prettier: 2.6.2
   stylelint: 14.7.1
   stylelint-config-prettier: 9.0.3_stylelint@14.7.1
@@ -5552,6 +5554,18 @@ packages:
       find-up: 4.1.0
     dev: true
 
+  /postcss-import/14.1.0_postcss@8.4.12:
+    resolution: {integrity: sha512-flwI+Vgm4SElObFVPpTIT7SU7R3qk2L7PyduMcokiaVKuWv9d/U+Gm/QAd8NDLuykTWTkcrjOeD2Pp1rMeBTGw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      postcss: ^8.0.0
+    dependencies:
+      postcss: 8.4.12
+      postcss-value-parser: 4.2.0
+      read-cache: 1.0.0
+      resolve: 1.22.0
+    dev: true
+
   /postcss-js/4.0.0_postcss@8.4.12:
     resolution: {integrity: sha512-77QESFBwgX4irogGVPgQ5s07vLvFqWr228qZY+w6lW599cRlK/HmnlivnnVUxkjHnCu4J16PDMHcH+e+2HbvTQ==}
     engines: {node: ^12 || ^14 || >= 16}
@@ -5892,6 +5906,12 @@ packages:
     dependencies:
       loose-envify: 1.4.0
     dev: false
+
+  /read-cache/1.0.0:
+    resolution: {integrity: sha1-5mTvMRYRZsl1HNvo28+GtftY93Q=}
+    dependencies:
+      pify: 2.3.0
+    dev: true
 
   /read-pkg-up/7.0.1:
     resolution: {integrity: sha512-zK0TB7Xd6JpCLmlLmufqykGE+/TlOePD6qKClNW7hHDKFh/J7/7gCWGR7joEQEW1bKq3a3yUZSObOoWLFQ4ohg==}

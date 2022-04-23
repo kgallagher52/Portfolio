@@ -1,7 +1,7 @@
 {
   "projectId": "i6g33q",
   "numTestsKeptInMemory": 4,
-  "integrationFolder": "cypress/integration/tests",
+  "integrationFolder": "cypress/tests/",
   "retries": {
     "openMode": 0,
     "runMode": 2

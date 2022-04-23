@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom'
 
 export const Navigation = () => {
   return (
-    <>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/service">Service</Link></li>
-      </ul>
-    </>
+    <div className='navigation'>
+      <nav className="flex justify-center space-x-4">
+        <Link to="/" className="font-bold px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Home</Link>
+        <Link to="/Projects" className="font-bold px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Projects</Link>
+        <Link to="/About" className="font-bold px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">About</Link>
+        <Link to="/Contact" className="font-bold px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Contact</Link>
+      </nav>
+    </div>
   )
 }

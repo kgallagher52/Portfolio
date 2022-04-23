@@ -4,5 +4,8 @@
     "module": "esnext",
     "moduleResolution": "node"
   },
-  "include": ["vite.config.ts"]
+  "css.lint.unknownAtRules": "ignore",
+  "include": [
+    "vite.config.ts"
+  ]
 }
