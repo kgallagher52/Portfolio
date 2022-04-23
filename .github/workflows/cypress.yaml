@@ -1,6 +1,8 @@
 name: Cypress Tests
 
-on: push
+on: 
+  pull_request:
+    branches: main
    
 jobs:
   cypress-run:
@@ -30,16 +32,6 @@ jobs:
             wait-on: 'http://localhost:3000'
             wait-on-timeout: 300
             config-file: cypress.json
-      - name: Cypress e2e Tests
-        id: cypress-e2e-tests
-        uses: cypress-io/github-action@v2
-        continue-on-error: true
-        with:
-            install: false
-            start: pnpm run dev
-            wait-on: 'http://localhost:3000'
-            wait-on-timeout: 300
-            config-file: cypress-e2e.json
       - name: Create test failure comment
         if: steps.cypress.outcome == 'failure'
         run: gh issue comment --body "Last failed Cypress test run:https://storage.googleapis.com/cy-test-reporter.appspot.com/${{ github.repository }}/index.html" 
