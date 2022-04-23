@@ -5,7 +5,6 @@ on:
     jobs:
       run-cypress-tests:
         name: Run Cypress
-        runs-on: ubuntu-latest
         steps:
           - name: Checkout Repo
             uses: actions/checkout@v2
