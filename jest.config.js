@@ -5,5 +5,13 @@ module.exports = {
       '<rootDir>/__mocks__/fileMock.js',
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
+  testMatch: [
+    "<rootDir>/**/*.test.tsx",
+    "<rootDir>/**/*.test.ts",
+],
+  setupFilesAfterEnv: [
+    "@testing-library/jest-dom/extend-expect"
+  ],
+
   testEnvironment: 'jest-environment-jsdom',
 }
