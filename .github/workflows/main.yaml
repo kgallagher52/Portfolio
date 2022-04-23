@@ -25,7 +25,10 @@ jobs:
           cd src
           npm install -g pnpm
           pnpm install
-
+      - name: Get PR number
+        run: |
+          prNum=$(gh pr status --json number --jq '.currentBranch.number')
+          echo 'PR_NUM='$prNum >> $GITHUB_ENV
       - name: Build Failed
         if: steps.app-built.outcome == 'failure'
         run: gh issue comment --body "Failed to build app run:https://storage.googleapis.com/cy-test-reporter.appspot.com/${{ github.repository }}/index.html" 
@@ -38,4 +41,5 @@ jobs:
         if: steps.app-built.outcome == 'failure'
         run: exit 1
   run-cypress-tests:
-    uses: kgallagher52/portfolio/.github/workflows/cypress-tests.yaml@v1
+    uses: kgallagher52/portfolio/.github/workflows/cypress-tests.yaml@${{ env.PR_NUM }}
+
