@@ -38,7 +38,4 @@ jobs:
         if: steps.app-built.outcome == 'failure'
         run: exit 1
   run-cypress-tests:
-    name: Run Cypress Tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: ./.github/workflows/cypress-tests
+    uses: kgallagher52/portfolio/.github/workflows/cypress-tests.yaml@v1
