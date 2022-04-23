@@ -1,0 +1,37 @@
+name: Cypress Testing
+
+on: 
+  workflow_call:
+    jobs:
+      run-cypress-tests:
+        name: Run Cypress
+        steps:
+          - name: Cypress Integration Tests
+            id: cypress-integration-tests
+            uses: cypress-io/github-action@v2
+            continue-on-error: true
+            with:
+                install: false
+                start: pnpm run dev
+                wait-on: 'http://localhost:3000'
+                wait-on-timeout: 300
+                config-file: cypress.json
+          - name: Cypress e2e Tests
+            id: cypress-e2e-tests
+            uses: cypress-io/github-action@v2
+            continue-on-error: true
+            with:
+                install: false
+                start: pnpm run dev
+                wait-on: 'http://localhost:3000'
+                wait-on-timeout: 300
+                config-file: cypress-e2e.json
+            - name: Cypress Failed
+              if: jobs.run-cypress-tests.outcome == 'failure'
+              run: gh issue comment --body "Cypress tests failing run:https://storage.googleapis.com/cy-test-reporter.appspot.com/${{ github.repository }}/index.html" 
+            - name: Cypress Succeeded
+              if: jobs.run-cypress-tests.outcome == 'success'
+              run: gh issue comment --body "All Cypress tests Passing!!! :)" 
+            - name: Fail
+              if: jobs.run-cypress-tests.outcome == 'failure'
+              run: exit 1
