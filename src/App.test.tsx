@@ -3,5 +3,5 @@ import { render, screen } from '@testing-library/react'
 
 it('renders hello message', () => {
   render(<App />)
-  expect(screen.getByText('')).toBeInTheDocument()
+  expect(screen.getByText('Keaton Gallagher')).toBeInTheDocument()
 });
