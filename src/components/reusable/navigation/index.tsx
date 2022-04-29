@@ -42,7 +42,6 @@ export const Navigation = () => {
       <ul className="flex flex-row space-x-8 items-center m-0 tablet:pt-6 tablet:block tablet:space-x-0 tablet:items-start">
         {navLinks.map((link, index) => (
           <Link to={link.to}>
-
             <li
               key={index}
               className={`flex p-2 mt-0 pt-0 cursor-pointer hover:bg-light-white text-gray-300 text-md items-center gap-x-4 tablet:mt-3 tablet:pt-2 

@@ -1,12 +1,14 @@
+
 module.exports = {
-  mode:'jit',
   content: ["src/**/*.{html,js,tsx,ts}"],
   theme: {
     extend: {
       colors: {
-        "heavy-purple": "#2F1B59",
-        "medium-purple": "#3B2559",
-        "light-purple": "#604D73",
+        "background": "#172026",
+        "teal": "#6EE7B7",
+        "purple": "#9333EA",
+        "blue": "#3B82F6",
+        "themeGreen": "#04BFAD", 
         "light-white": "rgba(255,255,255,0.17)",
         "primary": "#265D73"
       }

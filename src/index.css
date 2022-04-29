@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  box-sizing:border-box;
+  margin:0;
+}
+@keyframes color {
+  0% {
+    background-color: #222;
+  }
+
+  50% {
+    background-color: #4285f4;
+  }
+
+  100% {
+    background-color: #222;
+  }
+}
+
+#image-container {
+  animation-name: color;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+@keyframes color {
+  to {
+    /* stylelint-disable-next-line color-function-notation */
+    box-shadow:  3px 3px 50px 50px rgba(110,231,183,100%), 3px 3px 50px 70px rgba(59,130,246,100%),3px 3px 50px 80px rgba(124,49,207,100%) ;
+  }
+}
