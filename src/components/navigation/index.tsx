@@ -13,20 +13,23 @@ export const Navigation = () => {
     { title: "Projects ", icon: <MdFolderSpecial size={24} />, to: "/projects" },
   ];
   return (
-    <div className={`bg-theme-blue p-5 pt-8 duration-300 sm:w-screen absolute inset-x-0 bottom-0 h-16 md:h-screen md:relative ${navToggle ? "md:w-72" : "md:w-20 "}`}>
+    <div className={`bg-primary p-5 pt-8 h-24  duration-300 w-screen absolute inset-x-0 bottom-0 flex tablet:block tablet:h-screen tablet:relative ${navToggle ? "tablet:w-72" : "tablet:w-20 "}`}>
       <img src={controlImage}
         className={
-          `absolute cursor-pointer border-2 rounded-full ${!navToggle && "rotate-180"} border-theme-blue w-7 hidden -right-3 top-9 md:visible 
+          `absolute cursor-pointer border-2 rounded-full ${!navToggle && "rotate-180"} border-primary w-7 hidden -right-3 top-9 tablet:block 
               `
         }
         onClick={() => setNavToggle(!navToggle)}
       />
 
-      <div className="flex gap-x-4 items-center">
+      <div className="flex flex-col items-start gap-x-4  tablet:flex-row tablet:items-center ">
         <img
           src={myImg}
-          className={`cursor-pointer duration-500 rounded-full w-10 ${navToggle && "rotate-[360deg]"
-            }`}
+          className={
+            `cursor-pointer 
+              duration-500 rounded-lg border-2 border-white w-10 
+             ${navToggle && "rotate-[360deg]"} tablet:mr-4`
+          }
         />
         <h1
           className={
@@ -36,22 +39,22 @@ export const Navigation = () => {
           Keaton Gallagher
         </h1>
       </div>
-      <ul className="pt-6">
+      <ul className="flex flex-row space-x-8 items-center m-0 tablet:pt-6 tablet:block tablet:space-x-0 tablet:items-start">
         {navLinks.map((link, index) => (
-          <li
-            key={index}
-            className={`flex p-2 cursor-pointer hover:bg-light-white text-gray-300 text-md items-center gap-x-4 
-              ${link.gap ? "mt-9" : "mt-2"} ${index === 0 && "bg-theme-blue"
-              } `}
-          >
+          <Link to={link.to}>
 
-            {link.icon}
-            <span className={`${!navToggle && "hidden"} origin-left duration-200`}>
-              <Link to={link.to}>
+            <li
+              key={index}
+              className={`flex p-2 mt-0 pt-0 cursor-pointer hover:bg-light-white text-gray-300 text-md items-center gap-x-4 tablet:mt-3 tablet:pt-2 
+              ${link.gap ? "mt-9" : "mt-2"} ${index === 0 && "bg-primary"
+                } `}
+            >
+              {link.icon}
+              <span className={`${!navToggle && "hidden"}  origin-left duration-200`}>
                 {link.title}
-              </Link>
-            </span>
-          </li>
+              </span>
+            </li>
+          </Link>
         ))}
       </ul>
     </div>
