@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { MdInfoOutline, MdHome, MdCall, MdFolderSpecial } from "react-icons/md";
+import myImg from '../../assets/mainImg.jpeg';
+import controlImage from '../../assets/control.png';
 
 export const Navigation = () => {
-  const [navToggle, setNavToggle] = useState<boolean>(true);
+  const [navToggle, setNavToggle] = useState<boolean>(false);
   const navLinks: { title: string; icon: any; to: string; gap?: boolean; }[] = [
     { title: "Home", icon: <MdHome size={24} />, to: "/" },
     { title: "About", icon: <MdInfoOutline size={24} />, to: "/about" },
@@ -11,18 +13,18 @@ export const Navigation = () => {
     { title: "Projects ", icon: <MdFolderSpecial size={24} />, to: "/projects" },
   ];
   return (
-    <div className={` ${navToggle ? "w-72" : "w-20 "} bg-theme-blue h-screen p-5  pt-8 relative duration-300`}>
-      <img src="./src/assets/control.png"
+    <div className={`bg-theme-blue p-5 pt-8 duration-300 sm:w-screen absolute inset-x-0 bottom-0 h-16 md:h-screen md:relative ${navToggle ? "md:w-72" : "md:w-20 "}`}>
+      <img src={controlImage}
         className={
-          `absolute cursor-pointer -right-3 top-9 w-7 border-theme-blue
-            border-2 rounded-full  ${!navToggle && "rotate-180"}`
+          `absolute cursor-pointer border-2 rounded-full ${!navToggle && "rotate-180"} border-theme-blue w-7 hidden -right-3 top-9 md:visible 
+              `
         }
         onClick={() => setNavToggle(!navToggle)}
       />
 
       <div className="flex gap-x-4 items-center">
         <img
-          src="./src/assets/mainImg.jpeg"
+          src={myImg}
           className={`cursor-pointer duration-500 rounded-full w-10 ${navToggle && "rotate-[360deg]"
             }`}
         />
