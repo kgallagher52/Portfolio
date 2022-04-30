@@ -4,7 +4,7 @@ import { MdInfoOutline, MdHome, MdCall, MdFolderSpecial } from "react-icons/md";
 import myImg from '../../assets/mainImg.jpeg';
 import controlImage from '../../assets/control.png';
 
-export const Navigation = () => {
+export const NavigationDrawer = () => {
   const [navToggle, setNavToggle] = useState<boolean>(false);
   const navLinks: { title: string; icon: any; to: string; gap?: boolean; }[] = [
     { title: "Home", icon: <MdHome size={24} />, to: "/" },
